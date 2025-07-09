@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Typewriter } from "react-simple-typewriter";
 import Marquee from "react-fast-marquee";
-import profilePic from "./assets/kajal-photo.jpg"; // Aapka photo
-import resumePDF from "./assets/Kajal-Verma-Resume.pdf"; // Aapka resume
+import profilePic from "./assets/kajal-photo.jpg";
+import resumePDF from "./assets/Kajal-Verma-Resume.pdf";
 
 const skills = [
   { name: "JavaScript", level: 85 },
+  { name: "TypeScript", level: 85 },
   { name: "React", level: 80 },
   { name: "Node.js", level: 75 },
   { name: "Express", level: 70 },
   { name: "MongoDB", level: 70 },
   { name: "CSS", level: 80 },
+  { name: "Next.js", level: 80 },
 ];
 
 const projects = [
@@ -22,6 +24,20 @@ const projects = [
       "Uma Dairy is a react and node.js based web page which is used to sell dairy products such as cowdunk,chhach,ghee.",
     live: "https://dairyfrontend.onrender.com/",
     code: "https://github.com/kajal19803/dairyfrontend",
+  },
+  {
+    name: "Agent Management",
+    description:
+      "A React and Node.js based system to manage agents and assign tasks in bulk using CSV/Excel uploads. Admins can upload task sheets, and agents can view their assigned tasks through a secure dashboard.",
+    live: "https://cstech-c8hr.onrender.com/",
+    code: "https://github.com/kajal19803/AgentManagement",
+  },
+  {
+    name: "Finance Tracker",
+    description:
+      "A personal finance tracker built with Next.js and MongoDB that allows users to record income and expenses, visualize their spending patterns, and manage transactions efficiently with a modern UI.",
+    live: "https://finance-pi-snowy.vercel.app/",
+    code: "https://github.com/kajal19803/Finance",
   },
 ];
 
@@ -33,19 +49,14 @@ const experience = [
     details:
       "Developed frontend components and contributed to backend APIs for internal projects.",
   },
-];
+  {
+  role: "AI Intern",
+  company: "Microsoft (AICTE Virtual Internship)",
+  duration: "May 2025 - June 2025",
+  details:
+    "Completed AICTE-approved Microsoft AI internship focused on machine learning fundamentals, model deployment, and ethical AI. Built mini-projects using Azure and Python-based ML tools.",
+},
 
-const testimonials = [
-  {
-    name: "Rohit Sharma",
-    role: "Senior Developer at XYZ Corp",
-    text: "Kajal is a dedicated and talented developer. She quickly grasps new concepts and delivers quality work.",
-  },
-  {
-    name: "Anjali Singh",
-    role: "Project Manager at DEF Inc",
-    text: "Great teamwork and problem-solving skills. Highly recommended!",
-  },
 ];
 
 const blogs = [
@@ -54,7 +65,6 @@ const blogs = [
     link: "https://kajalportfolio.hashnode.dev/how-i-built-a-full-stack-diary-app-with-mern-stack",
     date: "June 2025",
   },
-  
 ];
 
 export default function App() {
@@ -66,34 +76,45 @@ export default function App() {
   }, []);
 
   return (
-    <div className={`w-screen h-screen ${darkMode ? "bg-gray-900 text-gray-100" : "bg-orange-50 text-gray-900"}`}>
+    <div className={`min-h-screen w-screen bg-gradient-to-br ${darkMode ? "from-gray-900 via-gray-800 to-gray-900 text-white" : "from-orange-100 via-orange-200 to-orange-50 text-gray-900"}`}>
       {/* Navbar */}
-      <nav className={`sticky top-0 z-50 shadow-md ${darkMode ? "bg-gray-800" : "bg-white"}`}>
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <div className={`text-xl font-bold ${darkMode ? "text-orange-400" : "text-orange-700"}`}>
-            Kajal Verma
-          </div>
-          <div className="space-x-6 hidden md:flex">
-            {["about", "skills", "projects", "experience", "testimonials", "blog", "contact"].map((section) => (
-              <a
-                key={section}
-                href={`#${section}`}
-                className={`hover:${darkMode ? "text-orange-300" : "text-orange-600"} capitalize`}
-              >
-                {section}
-              </a>
-            ))}
-          </div>
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className={`ml-4 px-3 py-1 rounded-full border-2 ${darkMode ? "border-orange-400 text-orange-400" : "border-orange-700 text-orange-700"} transition`}
-            aria-label="Toggle Dark Mode"
-            title="Toggle Dark Mode"
-          >
-            {darkMode ? "Light Mode" : "Dark Mode"}
-          </button>
-        </div>
-      </nav>
+      <nav
+  className={`sticky top-0 z-50 shadow-md transition duration-300 ${
+    darkMode ? "bg-black text-white" : "bg-white text-black"
+  }`}
+>
+  <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <div className={`text-xl font-bold ${darkMode ? "text-orange-400" : "text-orange-700"}`}>
+      Kajal Verma
+    </div>
+    <div className="space-x-6 hidden md:flex">
+      {["about", "skills", "projects", "experience", "blog", "contact"].map((section) => (
+        <a
+          key={section}
+          href={`#${section}`}
+          className={`capitalize transition ${
+            darkMode ? "hover:text-orange-300" : "hover:text-orange-600"
+          }`}
+        >
+          {section}
+        </a>
+      ))}
+    </div>
+    <button
+      onClick={() => setDarkMode(!darkMode)}
+      className={`ml-4 px-3 py-1 rounded-full border-2 transition ${
+        darkMode
+          ? "border-orange-400 text-orange-400 hover:bg-orange-900"
+          : "border-orange-700 text-orange-700 hover:bg-orange-100"
+      }`}
+      aria-label="Toggle Dark Mode"
+      title="Toggle Dark Mode"
+    >
+      {darkMode ? "Light Mode" : "Dark Mode"}
+    </button>
+  </div>
+</nav>
+
 
       {/* Marquee Tagline */}
       <Marquee pauseOnHover gradient={false} speed={60} className={`py-1 ${darkMode ? "bg-orange-700 text-orange-50" : "bg-orange-300 text-orange-900"}`}>
@@ -245,9 +266,6 @@ export default function App() {
         </ul>
       </section>
 
-      {/* Testimonials */}
-      
-
       {/* Blog */}
       <section
         id="blog"
@@ -300,7 +318,7 @@ export default function App() {
 
   {/* Contact Info */}
   <div
-    className={`text-center mb-8 space-y-2 ${
+    className={`text-center  mb-8 space-y-2 ${
       darkMode ? "text-gray-300" : "text-gray-700"
     }`}
   >
@@ -344,19 +362,19 @@ export default function App() {
       type="text"
       placeholder="Your Name"
       required
-      className="p-3 rounded border border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+      className="p-3 rounded border bg-white border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
     />
     <input
       type="email"
       placeholder="Your Email"
       required
-      className="p-3 rounded border border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+      className="p-3 rounded border bg-white border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
     />
     <textarea
       placeholder="Your Message"
       required
       rows="5"
-      className="p-3 rounded border border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+      className="p-3 rounded border bg-white border-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
     />
     <button
       type="submit"
