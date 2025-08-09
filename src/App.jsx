@@ -44,7 +44,7 @@ const projects = [
 const experience = [
   {
     role: "Full stack Web Developer Intern",
-    company: "EYGDS",
+    company: "EYGDS(AICTE Virtual Internship)",
     duration: "Feb 2025 - March 2025",
     details:
       "Developed frontend components and contributed to backend APIs for internal projects.",
