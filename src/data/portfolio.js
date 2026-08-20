@@ -46,7 +46,7 @@ export const hero = {
     "Computer Science student specializing in full-stack web development and AI. I design and ship production-ready applications — from MERN e-commerce platforms to Azure-powered conversational AI — with a focus on performance, scalability, and real-world impact.",
   stats: [
     { value: "1500+", label: "LeetCode Rating" },
-    { value: "148+", label: "DSA Problems" },
+    { value: "188+", label: "DSA Problems" },
     { value: "8.4", label: "CGPA" },
   ],
 };
@@ -245,7 +245,7 @@ export const achievements = [
   {
     title: "LeetCode — 1500+ Rating",
     description:
-      "Achieved a 1500+ LeetCode rating with 148+ Data Structures and Algorithms problems solved.",
+      "Achieved a 1500+ LeetCode rating with 188+ Data Structures and Algorithms problems solved.",
     icon: "star",
   },
   {
